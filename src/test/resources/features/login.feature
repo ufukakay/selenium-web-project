@@ -1,7 +1,7 @@
 Feature: Login Page Credentials
 
 
-  Scenario Outline: Valid UserName and Valid Password
+  Scenario Outline: Valid with username and Valid with password
     Given I go to the Guru login page
     When  Enter valid "<username>" and valid "<password>"
     And   Login Button Click

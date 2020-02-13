@@ -18,9 +18,9 @@ public class NCustomerNameDefinition {
         newCustomerPage.setUp("http://demo.guru99.com/V4/manager/addcustomerpage.php");
     }
 
-    @When("^Name field empty$")
-    public void nameFieldEmpty() {
-        newCustomerPage.name().sendKeys("");
+    @When("^Name field \"(.*)\"$")
+    public void nameFieldEmpty(String value) {
+        newCustomerPage.name().sendKeys(value);
     }
 
     @And("^Press TAB and move to next Field$")
@@ -28,9 +28,9 @@ public class NCustomerNameDefinition {
         newCustomerPage.name().sendKeys(Keys.TAB);
     }
 
-    @Then("^Show Error Message$")
-    public void showErrorMessage() {
-        String expectedMessage = "Customer name must not be blank";
+    @Then("^Show Error Message \"(.*)\"$")
+    public void showErrorMessage(String message) {
+        String expectedMessage = message;
         String actualMessage = newCustomerPage.driver.findElement(By.id("message")).getText();
 
         Assert.assertEquals(actualMessage,expectedMessage);
