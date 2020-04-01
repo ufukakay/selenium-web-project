@@ -9,7 +9,7 @@ Feature: Login Page Credentials
 
     Examples:
     | username    | password        |
-    | mngr243629  | arymUha         |
+    | mngr251792  | sYhynaz         |
 #    | mngr243629  | invalidpassword |
 #    | invaliduser | arymUha         |
 #   | invaliduser | invalidpassword |

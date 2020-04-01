@@ -9,29 +9,37 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
 
-public class NCustomerNameDefinition {
+public class NCAddressDefinition {
     NewCustomerPage newCustomerPage;
 
-    @Given("^I go to the New Customer Page$")
+    @Given("^I go to the New Customer Pages$")
     public void newCustomerPage() {
         newCustomerPage = new NewCustomerPage();
         newCustomerPage.setUp("http://demo.guru99.com/V4/manager/addcustomerpage.php");
     }
 
-    @When("^Name field \"(.*)\"$")
-    public void nameFieldEmpty(String value) {
-        newCustomerPage.name().sendKeys(value);
+    @When("^Address field \"(.*)\"$")
+    public void addressFieldEmpty(String value) {
+        if(value.equals("Keys"))
+        {
+            newCustomerPage.address().sendKeys(Keys.SPACE);
+        }
+        else
+        {
+            newCustomerPage.address().sendKeys(value);
+
+        }
     }
 
-    @And("^Press TAB and move to next Field$")
+    @And("^Press TABs and move to next Field$")
     public void pressTAB() {
-        newCustomerPage.name().sendKeys(Keys.TAB);
+        newCustomerPage.address().sendKeys(Keys.TAB);
     }
 
-    @Then("^Show Error Message \"(.*)\"$")
+    @Then("^Show Error Messages \"(.*)\"$")
     public void showErrorMessage(String message) {
         String expectedMessage = message;
-        String actualMessage = newCustomerPage.driver.findElement(By.id("message")).getText();
+        String actualMessage = newCustomerPage.driver.findElement(By.id("message3")).getText();
 
         Assert.assertEquals(actualMessage,expectedMessage);
         newCustomerPage.tearDown();
